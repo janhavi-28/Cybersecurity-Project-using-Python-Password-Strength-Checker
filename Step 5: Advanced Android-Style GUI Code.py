@@ -4,7 +4,7 @@ from tkinter import messagebox
 from datetime import datetime
 
 # Function to check password strength
-def check_password_strength():
+def check_password_strength(event=None):  # Accept `event` to handle key press
     password = password_entry.get()
     
     if not password:
@@ -103,6 +103,9 @@ tk.Label(
 ).pack(pady=10)
 password_entry = tk.Entry(root, show="*", font=entry_font, width=30, relief="flat", bd=0)
 password_entry.pack(pady=10)
+
+# Bind the Enter key to the check_password_strength function
+password_entry.bind("<Return>", check_password_strength)
 
 # Check Button
 check_button = tk.Button(
